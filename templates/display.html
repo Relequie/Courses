@@ -29,7 +29,13 @@
             <td>{{ entry[0] }}</td>
             <td>{{ entry[1] }}</td>
             <td>{{ entry[2] }}</td>
-            <td>{{ entry[3] }}</td>
+            <td>{% if entry[3] >= entry[2] %}
+                FULL
+                {% endif %}
+                {% if entry[3] < entry[2] %}
+                {{entry[3]}}
+                {% endif %}
+            </td>
             <td><a href="{{url_for('join', cid=entry[0])}}">Join</a></td>
             <td><a href="{{url_for('status', cid=entry[0])}}">Show</a></td>
         </tr>
