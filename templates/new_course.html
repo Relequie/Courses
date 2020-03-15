@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <form method="POST">
+        <h1>Create New Course!</h1>
+        <table>
+            <tr><th class="label">Course Name</th></tr>
+            <tr><td><input type="text" name="coursename" class="input"></td></tr>
+            <tr><th class="label">Maximum Pax</th></tr>
+            <tr><td><input type="text" name="maxpax" class="input"></td></tr>
+            <tr><td><input type="submit" value="Create!" id="submit"></td></tr>
+        </table>
+    </form>
+    <a href="{{url_for('display')}}">Back</a>
+    <style>
+        .input{
+            font-size: 23px;
+            border: none;
+            background-color: rgb(236, 229, 200);
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 350px;
+        }
+        .label{
+            font-size: 23px;
+            text-align: left;
+            padding: 10px;
+            margin-bottom: 10px;
+            padding-left: 0px;
+        }
+        #submit{
+            border: none;
+            color: rgb(236, 229, 200);
+            background-color: rgb(121, 70, 63);
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        a{
+        font-size: 23px;
+        }
+    </style>
+</div>
+{% endblock %}

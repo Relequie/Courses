@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    {% if error == 1 %}
+    <h1 id="none">You have already join this course. Click <a href="{{url_for('display')}}">here </a> to join another one.</h1>
+    <style>
+        #none{
+            background-color: rgb(235, 215, 186);
+            text-align: center;
+            padding: 200px;
+            margin-top: 45px;
+        }
+    </style>
+    {% endif %}
+    {% if error == 0 %}
+    <h1>Welcome to the {{name[0]}} course,</h1>
+    <h2>Insert your email to join!</h2>
+    <form method="POST">
+    <table>
+        <tr><th class="label">Course Name</th></tr>
+        <tr><td class="label" id="spe">{{name[0]}}</td></tr>
+        <tr><th class="label">Email</th></tr>
+        <tr><td><input type="email" name="email" class="input"></td></tr>
+        <tr><td><input type="submit" value="Join!" id="submit"></td></tr>
+    </table>
+    </form>
+    <a href="{{url_for('display')}}">Back</a>
+    <style>
+        .input{
+            font-size: 23px;
+            border: none;
+            background-color: rgb(236, 229, 200);
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 350px;
+        }
+        .label{
+            font-size: 23px;
+            text-align: left;
+            padding: 10px;
+            margin-bottom: 10px;
+            padding-left: 0px;
+        }
+        #submit{
+            border: none;
+            color: rgb(236, 229, 200);
+            background-color: rgb(121, 70, 63);
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        a{
+        font-size: 23px;
+        }
+        #spe{
+            background-color: rgb(236, 229, 200);
+            padding-left: 15px;
+        }
+    </style>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    {% if result|length == 0 %}
+    <h1 id="none">There are currently no course available. Be the first to <a href="{{ url_for('newcourse') }}">Create!</a></h1>
+    <style>
+        #none{
+            background-color: rgb(235, 215, 186);
+            text-align: center;
+            padding: 200px;
+            margin-top: 45px;
+        }
+    </style>
+    {% endif %}
+    {% if result|length > 0 %}
+    <h1>Welcome User,</h1>
+    <h1>These are the courses currently available</h1>
+    <table>
+        <tr>
+            <th width=20px>ID</th>
+            <th width=50%>Course Name</th>
+            <th width=20%>Maximum Pax</th>
+            <th width=20%>Current Pax</th>
+            <th>Join Course</th>
+            <th>Status</th>
+        </tr>
+        {% for entry in result %}
+        <tr>
+            <td>{{ entry[0] }}</td>
+            <td>{{ entry[1] }}</td>
+            <td>{{ entry[2] }}</td>
+            <td>{{ entry[3] }}</td>
+            <td><a href="{{url_for('join', cid=entry[0])}}">Join</a></td>
+            <td><a href="{{url_for('status', cid=entry[0])}}">Show</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('newcourse') }}">Create new courses!</a>
+    <style>
+        table{
+        text-align: left;
+        }
+    th{
+        text-align: center;
+        }
+    th, td{
+        border-right: 1px solid rgb(175, 91, 91);
+        background-color: rgb(235, 215, 186);
+        padding: 10px;
+        font-size: 23px;
+        margin: 15px;
+        }
+    a{
+        font-size: 23px;
+        }
+    </style>
+    {% endif %}
+</div>
+{% endblock %}
